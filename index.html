@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [38.16, -96.96],
+              zoom: 4
+          });
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 11,
+               minZoom: 2
+            }).addTo(map);
+
+            var campingIcon = L.icon({
+    iconUrl: 'Camping.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var weddingIcon = L.icon({
+    iconUrl: 'wedding.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var archIcon = L.icon({
+    iconUrl: 'arch.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+            var marker1 = L.marker([45.1855961,-87.145539], {icon: campingIcon}).addTo(map);
+            var marker2 = L.marker([32.8205865,-96.8716261], {icon: weddingIcon}).addTo(map);
+            var marker3 = L.marker([38.6530169,-90.383545], {icon: archIcon}).addTo(map);
+
+            marker1.bindPopup("Door County, WI");
+            marker2.bindPopup("Dallas, TX");
+            marker3.bindPopup("St. Louis, MO");
+
+            var pic1 = '<img src="https://www.chicagotribune.com/resizer/ku1jCxNxA3uGeb86rQpJb0yCvNs=/fit-in/800x533/smart/filters:fill(black)/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/VK4OR67D6FC4JGG4GQAJWL2I4U.jpg" alt="Door County" width="250">';
+            var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Dallas_view.jpg" alt="Dallas" width="250">';
+            var pic3 = '<img src="https://www.outfrontmedia.com/-/media/images/ofm/markets/stlouis/st-louis-hero.jpg" alt="St. Louis" width="250">';
+
+            marker1.bindPopup('<p style="color:slateblue; font-weight:bold"> Went camping in Door County, WI </p>' + pic1);
+            marker2.bindPopup('<p style="color:tomato; font-weight:bold"> Went to a wedding in Dallas, TX</p>' + pic2);
+            marker3.bindPopup('<p style="color:gray; font-weight:bold"> Went to visit family in St. Louis, MO</p>' + pic3);
+
+        </script>
+   </body>
+</html>
